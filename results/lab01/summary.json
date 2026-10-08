@@ -1,22 +1,17 @@
 {
-  "versions": {
-    "python": "3.12.10",
-    "numpy": "2.5.1",
-    "pandas": "3.0.3",
-    "matplotlib": "3.9.0",
-    "scikit_learn": "1.9.0",
-    "joblib": "1.5.3"
+  "titanic_missing_share": {
+    "Embarked": 0.0022,
+    "Age": 0.1987,
+    "Cabin": 0.771
   },
-  "titanic_rows": 891,
-  "titanic_survival_rate": 0.3838383838383838,
   "feature_auc": {
-    "raw columns": 0.8420896282464776,
-    "raw + engineered": 0.8723052113393313,
-    "engineered + cabin": 0.867721948735359,
-    "engineered + fare/family": 0.8721354608725174,
-    "engineered + both": 0.8678916992021729
+    "raw columns": 0.8421,
+    "raw + engineered": 0.8723,
+    "engineered + cabin": 0.8677,
+    "engineered + fare/family": 0.8721,
+    "engineered + both": 0.8679
   },
-  "closest_tumours": {
+  "closest_pair": {
     "raw": [
       3,
       5
@@ -27,14 +22,16 @@
     ]
   },
   "student_mae": {
-    "all 30 features": 2.180560378144676,
-    "SelectKBest k=5": 2.133751628618513,
-    "SelectKBest k=10": 2.1385162891085727,
-    "SelectKBest k=20": 2.124586949478582,
-    "lasso": 2.0773018892258825,
-    "all 30 + G2 (leakage demo)": 0.7618676803286086,
-    "also exclude absences": 2.184808081190427
+    "all 30 features": 2.1806,
+    "SelectKBest, k=5": 2.1338,
+    "SelectKBest, k=10": 2.1385,
+    "SelectKBest, k=20": 2.1246,
+    "lasso (selects itself)": 2.0773,
+    "all 30 + G2 (leakage)": 0.7619
   },
-  "lasso_encoded_columns": 56,
-  "lasso_retained": 18
+  "lasso_kept": {
+    "nonzero": 18,
+    "above_1e-9": 16,
+    "encoded_columns": 56
+  }
 }

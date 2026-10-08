@@ -1,8 +1,7 @@
 model,validation_mae
 all 30 features,2.180560378144676
-SelectKBest k=5,2.133751628618513
-SelectKBest k=10,2.1385162891085727
-SelectKBest k=20,2.124586949478582
-lasso,2.0773018892258825
-all 30 + G2 (leakage demo),0.7618676803286086
-also exclude absences,2.184808081190427
+"SelectKBest, k=5",2.133751628618513
+"SelectKBest, k=10",2.1385162891085727
+"SelectKBest, k=20",2.124586949478582
+lasso (selects itself),2.0773018892258825
+all 30 + G2 (leakage),0.7618676803286086

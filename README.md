@@ -2,7 +2,7 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/banner-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/banner-light.svg">
-    <img src=".github/readme/banner-dark.svg" alt="ML LAB" width="850">
+    <img src=".github/readme/banner-dark.svg" alt="ML-LAB" width="850">
   </picture>
 </div>
 
@@ -10,169 +10,175 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/card-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/card-light.svg">
-    <img src=".github/readme/card-dark.svg" alt="Machine learning lab: two executed notebooks, isolated Python environment, and measured results" width="850">
+    <img src=".github/readme/card-dark.svg" alt="ML-LAB, worked notebooks for UTP's TEB3123 Machine Learning: two of eight labs done, feature engineering and selection and the supervised workflow, with a Titanic survival model at 0.837 test ROC AUC" width="850">
   </picture>
 </div>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/python-3.12-80e0ff?style=for-the-badge&labelColor=161b22" alt="Python 3.12">
-  <img src="https://img.shields.io/badge/labs-01_%2B_02-3fb950?style=for-the-badge&labelColor=161b22" alt="Labs 01 and 02">
-  <a href="https://github.com/hafizmnazman/ml-lab/actions/workflows/labs.yml"><img src="https://img.shields.io/badge/checks-notebooks_%2B_data-79d6a4?style=for-the-badge&labelColor=161b22" alt="Notebook execution and data checks"></a>
+  <a href="#hafizml-lab-ls-all_experiments"><img src="https://img.shields.io/badge/labs-2_of_8_done-79e0b0?style=for-the-badge&labelColor=161b22" alt="labs: 2 of 8 done"></a>
+  <a href="#hafizml-lab-cat-resultssummaryjson"><img src="https://img.shields.io/badge/titanic-0.837_test_roc_auc-c9f7e0?style=for-the-badge&labelColor=161b22" alt="titanic: 0.837 test ROC AUC"></a>
+  <a href="#hafizml-lab-python--m-venv-venv"><img src="https://img.shields.io/badge/python-3.12_%C2%B7_scikit--learn_1.9-3fb950?style=for-the-badge&labelColor=161b22" alt="python 3.12, scikit-learn 1.9"></a>
 </p>
 
 ```text
 hafiz@ml-lab:~$ cat ./about
-machine learning, one experiment at a time.
-utp coursework: features, supervised models, and the evidence behind them.
+worked notebooks for teb3123 machine learning at utp, one per lab. each one
+follows its handout part by part, does the try-it exercises, answers the
+questions, and saves every chart and table it draws.
 
-hafiz@ml-lab:~$ cat results/lab01/summary.json
-raw features       0.842 validation roc auc
-engineered         0.872 validation roc auc
-
-hafiz@ml-lab:~$ cat models/titanic_survival_card.json
-cross-validation   0.850 roc auc
-held-out test      0.837 roc auc / 223 passengers
+hafiz@ml-lab:~$ cd all_experiments
+hafiz@ml-lab:~/all_experiments$ python predict_passenger.py --pclass 2 --sex female --age 30 --fare 20
+survival probability: 0.805  ->  survived
+(model: logistic regression pipeline, test ROC AUC 0.837)
 ```
 
-### <samp>hafiz@ml-lab:~$ open all_experiments/</samp>
+### <samp>hafiz@ml-lab:~$ jupyter lab</samp>
 
 <p align="center">
-  <img src=".github/readme/shots/notebook-lab01.png" alt="Screenshot of the executed Lab 01 notebook showing measured feature comparison outputs" width="850">
+  <img src=".github/readme/shots/jupyterlab.png" alt="JupyterLab with the Lab 2 notebook open on the hourly bike demand cell: the code, actual and predicted rentals for the first validation week, and the observations underneath" width="850">
 </p>
 
-Two worked notebooks with explanations before the code, real executed
-outputs, every try-it exercise, and answers to the understanding questions.
-Charts and tables are saved beside their machine-readable summaries.
+Each part opens with a short note on what it does and closes with an **Observations** cell that
+says what the numbers show. Above is Lab 2, Part B: the forest picks up the two commuter peaks of
+a working day and misses a rainy Friday morning.
 
-| notebook | what it covers |
-|:--|:--|
-| [Lab 01](all_experiments/lab01_features_worked.ipynb) | Titanic features, scaling geometry, ridge/SelectKBest/lasso, and leakage |
-| [Lab 02](all_experiments/lab02_supervised_workflow_worked.ipynb) | Insurance regression, chronological bike demand, classification, thresholds, CV, and saved models |
+### <samp>hafiz@ml-lab:~$ ls all_experiments/</samp>
 
-### <samp>hafiz@ml-lab:~$ compare --same-split</samp>
+| lab | notebook | topic | datasets | status |
+|:-:|:--|:--|:--|:-:|
+| 01 | [`lab01_features_worked`](all_experiments/lab01_features_worked.ipynb) | Feature engineering and selection | Titanic, breast cancer, student performance | done |
+| 02 | [`lab02_supervised_workflow_worked`](all_experiments/lab02_supervised_workflow_worked.ipynb) | Regression, classification, the workflow | Insurance, bike sharing, Titanic, breast cancer, heart disease | done |
+| 03 | `lab03_supervised_models_worked` | KNN, naive Bayes, SVM, trees, ensembles | Breast cancer, Titanic, Ames housing, red wine | next |
+| 04 | `lab04_clustering_pca_worked` | K-means, DBSCAN, PCA | Mall customers, digits | |
+| 05 | `lab05_anomaly_limited_labels_worked` | Anomaly detection, limited labels | Credit card fraud, breast cancer | |
+| 06 | `lab06_reinforcement_worked` | Reinforcement learning | | |
+| 07 | `lab07_deep_learning_cnn_worked` | CNNs | Digits | |
+| 08 | `lab08_deep_learning_lstm_worked` | LSTM forecasting | Bike sharing | |
 
-<table>
-  <tr>
-    <td width="50%"><samp>features change the ranking</samp></td>
-    <td width="50%"><samp>units change the neighbours</samp></td>
-  </tr>
-  <tr>
-    <td><img src="results/lab01/titanic_feature_comparison.png" alt="Validation ROC AUC on identical passenger splits for raw and engineered features"></td>
-    <td><img src="results/lab01/scaling_geometry.png" alt="Raw and standardized distances between the same five tumours"></td>
-  </tr>
-  <tr>
-    <td>Engineered features improve AUC from 0.842 to 0.872. Cabin and fare-per-family additions do not improve this split further.</td>
-    <td>The closest pair changes from tumours 3/5 to 2/5. Scaling belongs inside the training pipeline when evaluating predictions.</td>
-  </tr>
-</table>
+[`predict_passenger.py`](all_experiments/predict_passenger.py) sits next to the notebooks and
+loads the model Lab 2 saves, without retraining.
 
-### <samp>hafiz@ml-lab:~$ inspect results/lab02/</samp>
+### <samp>hafiz@ml-lab:~$ open results/lab01/</samp>
 
 <table>
   <tr>
-    <td width="50%"><samp>future dates stay in validation</samp></td>
-    <td width="50%"><samp>same model, two decision rules</samp></td>
+    <td width="50%"><samp>same model, same split, new features</samp></td>
+    <td width="50%"><samp>same five tumours, two geometries</samp></td>
   </tr>
   <tr>
-    <td><img src="results/lab02/bike_hourly_validation.png" alt="Observed and predicted hourly rentals during the first seven chronological validation days"></td>
-    <td><img src="results/lab02/cancer_confusion_matrices.png" alt="Breast-cancer validation confusion matrices at thresholds 0.50 and 0.30"></td>
+    <td><img src="results/lab01/titanic_feature_comparison.png" alt="Validation ROC AUC for five Titanic feature sets on one split: raw columns 0.842, engineered 0.872, plus cabin 0.868, plus fare per family 0.872, plus both 0.868"></td>
+    <td><img src="results/lab01/scaling_geometry.png" alt="Distance heatmaps between the first five tumours, in raw units and after standardizing"></td>
   </tr>
   <tr>
-    <td>Hourly MAE: 56.5 rentals. Train on earlier observations; validate on later ones.</td>
-    <td>Moving from 0.50 to 0.30 reduces missed positives from 4 to 2, with 1 false alert in this validation sample.</td>
+    <td>Family size, title and log fare lift Titanic validation ROC AUC from 0.842 to 0.872. The deck letter and fare per family member add nothing on top.</td>
+    <td>Raw distances are almost pure tumour area. After standardizing, tumour 5's nearest neighbour changes from tumour 3 to tumour 2.</td>
   </tr>
 </table>
 
-### <samp>hafiz@ml-lab:~$ cat docs/results.md</samp>
+<p align="center">
+  <img src="results/lab01/student_selection.png" alt="Validation MAE for predicting final grades: all 30 features 2.18, SelectKBest 2.12 to 2.14, lasso 2.08, and 0.76 once the leaked G2 grade is added; next to it, the lasso's nonzero coefficients" width="850">
+</p>
 
-| experiment | evidence from this run |
-|:--|:--|
-| Titanic / engineered features | 0.872 validation ROC AUC |
-| Student grades / lasso | 2.077 validation MAE / 18 of 56 encoded columns retained |
-| Insurance / OLS | $4,181.19 validation MAE |
-| Bike demand / daily forest | 1040.4 validation MAE / rentals per day |
-| Bike demand / hourly forest | 56.5 validation MAE / rentals per hour |
-| Titanic / tuned logistic pipeline | 0.837 held-out test ROC AUC |
-| Heart disease / extension | 0.932 validation ROC AUC / 0.883 accuracy |
+Predicting final grades at enrolment: ten columns do as well as thirty (MAE 2.14 against 2.18),
+and lasso does best at 2.08 with 16 columns. The orange bar is the trap. Add the second-period
+grade `G2` and the error drops to 0.76, a score nobody can get on enrolment day.
 
-Full metrics, interpretation, and links to the source tables:
-[docs/results.md](docs/results.md). The breast-cancer threshold choice is
-written in [the decision memo](results/lab02/decision_memo.md).
+### <samp>hafiz@ml-lab:~$ open results/lab02/</samp>
 
-### <samp>hafiz@ml-lab:~$ ./start-lab.cmd</samp>
+<table>
+  <tr>
+    <td width="50%"><samp>two models, two metrics, two winners</samp></td>
+    <td width="50%"><samp>one model, two thresholds</samp></td>
+  </tr>
+  <tr>
+    <td><img src="results/lab02/titanic_baselines.png" alt="Titanic validation accuracy and ROC AUC for logistic regression and a random forest, against the majority baseline"></td>
+    <td><img src="results/lab02/cancer_confusion_matrices.png" alt="Breast cancer confusion matrices at thresholds 0.50 and 0.30"></td>
+  </tr>
+  <tr>
+    <td>The random forest wins on accuracy (0.798 against 0.776) and logistic regression on ROC AUC (0.842 against 0.834). Gaps this small need cross-validation to call.</td>
+    <td>Lowering the threshold from 0.50 to 0.30 catches two more malignant tumours (missed ones drop from 4 to 2) and adds no false alarm.</td>
+  </tr>
+  <tr>
+    <td><samp>the smoker bands</samp></td>
+    <td><samp>the folds disagree more than the settings</samp></td>
+  </tr>
+  <tr>
+    <td><img src="results/lab02/insurance_residuals.png" alt="Ridge regression on insurance charges: actual against predicted, and residuals, with smokers in orange"></td>
+    <td><img src="results/lab02/titanic_cross_validation.png" alt="Cross-validated ROC AUC with fold standard deviations for each C and class weight"></td>
+  </tr>
+  <tr>
+    <td>Smokers split into two residual bands: lean smokers come out about $9,000 too high, smokers with a BMI of 30 or more about $7,000 too low. A linear model without an interaction term cannot fix that.</td>
+    <td>All ten settings of C and class weight score between 0.847 and 0.850, inside a fold to fold spread of about 0.02. The pick (C=0.1, balanced) tests at 0.837.</td>
+  </tr>
+</table>
 
-On this computer, double-click **`start-lab.cmd`**. JupyterLab opens in your
-browser; pick a notebook and the **Python (ml-lab)** kernel. Use Shift+Enter
-to run a cell.
+### <samp>hafiz@ml-lab:~$ cat results/*/summary.json</samp>
 
-For a fresh clone on Windows with Python 3.12:
+| lab | experiment | result |
+|:-:|:--|:--|
+| 01 | Titanic, raw columns against engineered features | validation ROC AUC 0.842 → 0.872 |
+| 01 | Student grades at enrolment, lasso | MAE 2.08 grade points, 16 of 56 columns kept |
+| 02 | Insurance charges, OLS | MAE $4,181, R² 0.784 |
+| 02 | Daily bike rentals, random forest | MAE 1,040 a day (average day 5,898) |
+| 02 | Hourly bike rentals, random forest | MAE 56.5 an hour (average hour 249) |
+| 02 | Titanic, logistic regression tuned by 5-fold CV | CV ROC AUC 0.850, test 0.837 |
+| 02 | Breast cancer, threshold 0.50 → 0.30 | recall 0.925 → 0.962, precision 0.98 at both |
+| 02 | Heart disease (try it yourself) | accuracy 0.883, ROC AUC 0.932 |
+
+The decision memo for the cancer threshold closes Part C of
+[Lab 2](all_experiments/lab02_supervised_workflow_worked.ipynb).
+
+### <samp>hafiz@ml-lab:~$ python -m venv .venv</samp>
+
+Route A from the course setup chapter, on Windows with Python 3.12:
 
 ```powershell
 git clone https://github.com/hafizmnazman/ml-lab.git
 cd ml-lab
-powershell -ExecutionPolicy Bypass -File scripts\setup.ps1
-.\start-lab.cmd
+py -3.12 -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+jupyter lab all_experiments
 ```
 
-Python's `.venv` is the course-supported setup used here. See
-[docs/setup.md](docs/setup.md) for environment setup, troubleshooting, and
-the original-file arrangement.
-
-### <samp>hafiz@ml-lab:~$ python predict_passenger.py</samp>
-
-```powershell
-# Execute both labs and regenerate the saved pipelines.
-.\.venv\Scripts\python.exe scripts\run_labs.py
-
-# Use the saved model without retraining.
-.\.venv\Scripts\python.exe predict_passenger.py --pclass 2 --sex female --age 30 --fare 20
-```
-
-```text
-survival probability: 0.805  ->  survived
-(model: logistic regression pipeline, test ROC AUC 0.8374)
-```
-
-The whole preprocessing pipeline is saved, together with a JSON model card.
-Binary models remain local and are recreated by Lab 02.
+On macOS or Linux, create it with `python3 -m venv .venv` and activate it with
+`source .venv/bin/activate`. Open a notebook and choose **Run > Run All Cells**. In VS Code, open
+the notebook, pick the `.venv` interpreter as the kernel and press **Run All**. Both start the
+notebook inside `all_experiments/`, which is where the code expects to run.
 
 ### <samp>hafiz@ml-lab:~$ tree -L 2</samp>
 
 ```text
-all_datasets/        original course data + checksum manifest
-all_experiments/     worked, executed notebooks for labs 01 and 02
-models/              saved pipelines (local) + model cards
-results/lab01/       feature and selection evidence
-results/lab02/       metrics, curves, splits, and decision memo
-docs/                setup, reading guide, and measured results
-scripts/             setup, notebook runner, and verification
-course_materials/    original handouts and starter files (local)
-.github/readme/      dark/light terminal art + notebook screenshots
+all_datasets/        the 12 course datasets, unchanged (the digits zip stays zipped for lab 4)
+all_experiments/     one worked notebook per lab, plus predict_passenger.py
+models/              the pipelines lab 2 saves, and the titanic model card
+results/lab01/       charts, tables and summary.json from the lab 1 notebook
+results/lab02/       the same for lab 2
+requirements.txt     the course packages, pinned to the versions the notebooks ran with
+course_materials/    the lecturer's handouts, kept on this machine only (gitignored)
+.github/readme/      the banner, the card and the screenshot on this page
 ```
 
-### <samp>hafiz@ml-lab:~$ python scripts/verify.py</samp>
-
-Verification checks all 12 dataset hashes, executed notebook cells, disjoint
-development/test rows, model-card consistency, threshold counts, and the
-prediction CLI from another directory. GitHub Actions reruns both labs and
-the checks on every push. To run locally:
-
-```powershell
-.\.venv\Scripts\python.exe scripts\verify.py
-```
+The layout follows the course setup chapter, so each new lab adds one
+`labNN_..._worked.ipynb` and one `results/labNN/`.
 
 ### <samp>hafiz@ml-lab:~$ cat ./notes</samp>
 
-- Preprocessing and feature selection fit on training rows only.
-- Titanic's final test is reserved before model comparison and evaluated
-  once. This corrects the reused validation/test split in the handout.
-- Student `G2` is a deliberate leakage demonstration. A separate comparison
-  removes accumulated absences for a stricter enrolment-time forecast.
-- Validation metrics are exploratory evidence for these datasets and splits.
-  Read the notebook explanations before interpreting coefficients or thresholds.
+- Lab 2, Part D reuses the Part C split, as the handout does, so Part C had already scored two
+  models on the Titanic test rows. The tuning never sees them, but strictly they are not fresh.
+  The notebook says so where it happens.
+- In Lab 1 the handout's `coef_ != 0` count says lasso kept 18 columns. Two of those
+  coefficients are around 1e-15, floating-point noise from one-hot pairs that always sum to 1,
+  so 16 is the real count.
+- The numbers on this page come from one run with `random_state=42` on the pinned versions.
+  Other package versions can move the last decimal.
 
-Study notes and the completed exercise map: [docs/lab-guide.md](docs/lab-guide.md).
+### <samp>hafiz@ml-lab:~$ cat ./credits</samp>
 
-<sub>README art and result text are rebuilt from the executed summaries with
-<code>python .github/readme/build.py</code>. The screenshot is a browser capture
-of the exported, executed notebook.</sub>
+The datasets come from the course bundle, which collects public datasets the course lists from
+Kaggle: Titanic, Breast Cancer Wisconsin, Medical Cost Personal, Student Performance, Bike
+Sharing, Heart Failure Prediction, Ames Housing, Red Wine Quality, Mall Customers, Optical
+Recognition of Handwritten Digits and Credit Card Fraud Detection. Each keeps its own licence.
+The lab handouts belong to the course and stay out of this repo.
+
+<sub>The banner and card are generated by <code>.github/readme/build.py</code> (standard library Python). Change a value at the top and run it again.</sub>

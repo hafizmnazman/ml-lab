@@ -6,10 +6,6 @@ __pycache__/
 .DS_Store
 Thumbs.db
 .env
-.env.*
-!.env.example
+
+# Lecturer handouts stay on this machine, not on GitHub.
 course_materials/
-Lab 1/
-Lab 2/
-models/*.joblib
-results/**/*.html

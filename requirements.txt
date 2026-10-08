@@ -1,11 +1,9 @@
-# Core labs 1-2 and notebook execution, tested with Python 3.12.
+# Course requirements (Chapter 2.5), pinned to the versions the notebooks ran with on Python 3.12.
 numpy==2.5.1
 pandas==3.0.3
 matplotlib==3.9.0
 scikit-learn==1.9.0
-scipy==1.18.0
 joblib==1.5.3
 jupyterlab==4.6.4
 ipykernel==7.3.0
-nbconvert==7.17.1
-nbformat==5.11.1
+# torch    # labs 7 and 8 (CNN, LSTM): uncomment when we get there, the CPU build is enough
