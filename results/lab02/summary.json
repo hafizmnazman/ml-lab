@@ -1,0 +1,118 @@
+{
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "matplotlib": "3.9.0",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3"
+  },
+  "insurance": {
+    "linear regression": {
+      "mae": 4181.1944737536505,
+      "rmse": 5796.284659276274,
+      "r2": 0.7835929767120722
+    },
+    "ridge": {
+      "mae": 4238.823916708751,
+      "rmse": 5821.591697020545,
+      "r2": 0.7816991510258207
+    }
+  },
+  "smoker_contrast_dollars": 23651.128855761228,
+  "bike_daily": {
+    "mae": 1040.4150949117022,
+    "rmse": 1245.0236575001534,
+    "r2": 0.5589085465165378,
+    "validation_mean_demand": 5897.802721088436,
+    "training_rows": 584,
+    "validation_rows": 147
+  },
+  "bike_hourly": {
+    "mae": 56.50896598957079,
+    "rmse": 84.5075294517465,
+    "r2": 0.8530960634830038,
+    "validation_mean_demand": 248.75460299194475,
+    "training_rows": 13903,
+    "validation_rows": 3476
+  },
+  "titanic_validation": {
+    "logistic": {
+      "accuracy": 0.8203592814371258,
+      "roc_auc": 0.8730279126213593
+    },
+    "random_forest": {
+      "accuracy": 0.8323353293413174,
+      "roc_auc": 0.9092839805825242
+    }
+  },
+  "titanic_majority_baseline": 0.6167664670658682,
+  "titanic_thresholds": [
+    {
+      "threshold": 0.3,
+      "precision": 0.6708860759493671,
+      "recall": 0.828125
+    },
+    {
+      "threshold": 0.5,
+      "precision": 0.7931034482758621,
+      "recall": 0.71875
+    },
+    {
+      "threshold": 0.7,
+      "precision": 0.8947368421052632,
+      "recall": 0.53125
+    }
+  ],
+  "cancer_thresholds": [
+    {
+      "threshold": 0.5,
+      "tn": 89,
+      "fp": 1,
+      "fn": 4,
+      "tp": 49,
+      "precision": 0.98,
+      "recall": 0.9245283018867925
+    },
+    {
+      "threshold": 0.3,
+      "tn": 89,
+      "fp": 1,
+      "fn": 2,
+      "tp": 51,
+      "precision": 0.9807692307692307,
+      "recall": 0.9622641509433962
+    }
+  ],
+  "cancer": {
+    "roc_auc": 0.9962264150943396,
+    "average_precision": 0.9942992040793095
+  },
+  "titanic_final": {
+    "best_parameters": {
+      "model__C": 0.1,
+      "model__class_weight": "balanced"
+    },
+    "cv_roc_auc": 0.8500254411310401,
+    "test_roc_auc": 0.8374214904090985,
+    "test_accuracy": 0.757847533632287,
+    "development_rows": 668,
+    "test_rows": 223,
+    "decision_threshold": 0.5
+  },
+  "saved_model_reload_matches": true,
+  "heart": {
+    "accuracy": 0.8826086956521739,
+    "roc_auc": 0.9320388349514562,
+    "confusion_matrix": [
+      [
+        86,
+        17
+      ],
+      [
+        10,
+        117
+      ]
+    ]
+  }
+}

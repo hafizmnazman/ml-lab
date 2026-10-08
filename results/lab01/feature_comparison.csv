@@ -1,0 +1,6 @@
+features,validation_roc_auc
+raw columns,0.8420896282464776
+raw + engineered,0.8723052113393313
+engineered + cabin,0.867721948735359
+engineered + fare/family,0.8721354608725174
+engineered + both,0.8678916992021729

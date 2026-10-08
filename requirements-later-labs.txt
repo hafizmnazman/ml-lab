@@ -1,0 +1,3 @@
+# Install when starting the neural-network labs (7-8).
+-r requirements.txt
+torch

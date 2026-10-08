@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="850" height="305" viewBox="0 0 850 305" role="img" aria-label="Two worked machine-learning labs and measured evidence"><g font-family="ui-monospace,Consolas,'Liberation Mono',monospace">
+<text x="28" y="32" font-size="16" fill="#80e0ff">./experiment --trace</text>
+<text x="28" y="67" font-size="14" fill="#e6edf3">01 / features</text>
+<text x="28" y="95" font-size="13" fill="#8b949e">inspect -&gt; engineer -&gt; select</text>
+<text x="28" y="145" font-size="14" fill="#e6edf3">02 / supervised</text>
+<text x="28" y="173" font-size="13" fill="#8b949e">split -&gt; fit -&gt; evaluate -&gt; save</text>
+<text x="28" y="224" font-size="13" fill="#79d6a4">[ok] two executed notebooks</text>
+<text x="28" y="252" font-size="13" fill="#8b949e">12 source files / seed 42</text>
+<line x1="403" y1="25" x2="403" y2="269" stroke="#30363d"/>
+<text x="438" y="32" font-size="14" fill="#80e0ff">hafiz@ml-lab:~$ cat ./evidence</text>
+<text x="438" y="72" font-size="13" fill="#8b949e">runtime</text>
+<text x="555" y="72" font-size="13" fill="#e6edf3">python 3.12 / .venv</text>
+<text x="438" y="100" font-size="13" fill="#8b949e">features</text>
+<text x="555" y="100" font-size="13" fill="#e6edf3">0.872 validation auc</text>
+<text x="438" y="128" font-size="13" fill="#8b949e">selection</text>
+<text x="555" y="128" font-size="13" fill="#e6edf3">2.077 lasso mae</text>
+<text x="438" y="156" font-size="13" fill="#8b949e">titanic</text>
+<text x="555" y="156" font-size="13" fill="#e6edf3">0.837 final test auc</text>
+<text x="438" y="184" font-size="13" fill="#8b949e">bike/hour</text>
+<text x="555" y="184" font-size="13" fill="#e6edf3">56.5 rentals mae</text>
+<text x="438" y="212" font-size="13" fill="#8b949e">models</text>
+<text x="555" y="212" font-size="13" fill="#e6edf3">pipeline + json card</text>
+<text x="438" y="268" font-size="12" fill="#79d6a4">[ok] reproducible course experiments</text>
+</g></svg>

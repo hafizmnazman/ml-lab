@@ -1,0 +1,34 @@
+{
+  "task": "predict Titanic survival (1 = survived)",
+  "features": [
+    "Pclass",
+    "Sex",
+    "Age",
+    "SibSp",
+    "Parch",
+    "Fare",
+    "Embarked"
+  ],
+  "model": "logistic regression pipeline",
+  "best_parameters": {
+    "model__C": 0.1,
+    "model__class_weight": "balanced"
+  },
+  "training_rows": 668,
+  "test_rows": 223,
+  "cross_validated_roc_auc": 0.85,
+  "final_test_roc_auc": 0.8374,
+  "final_test_accuracy": 0.7578,
+  "decision_threshold": 0.5,
+  "scikit_learn_version": "1.9.0",
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.5.1",
+    "pandas": "3.0.3",
+    "matplotlib": "3.9.0",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3"
+  },
+  "random_state": 42,
+  "evaluation": "25% held out before Part C; five-fold tuning on development rows; test evaluated once"
+}

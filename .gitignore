@@ -1,0 +1,15 @@
+.venv/
+.local/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+course_materials/
+Lab 1/
+Lab 2/
+models/*.joblib
+results/**/*.html

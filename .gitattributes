@@ -1,0 +1,16 @@
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.ipynb text eol=lf
+*.svg text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.ps1 text eol=crlf
+*.cmd text eol=crlf
+# Preserve the exact source dataset bytes used by manifest.json.
+all_datasets/*.csv -text
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.zip binary
+*.joblib binary
