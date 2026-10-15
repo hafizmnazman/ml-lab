@@ -129,7 +129,7 @@ grade `G2` and the error drops to 0.76, a score nobody can get on enrolment day.
     <td><img src="results/lab02/titanic_cross_validation.png" alt="Cross-validated ROC AUC with fold standard deviations for each C and class weight"></td>
   </tr>
   <tr>
-    <td>Smokers split into two residual bands: lean smokers come out about $9,000 too high, smokers with a BMI of 30 or more about $7,000 too low. A linear model without an interaction term cannot fix that.</td>
+    <td>Smokers split into two residual bands: lean smokers come out about $9,000 too high, smokers with a BMI of 30 or more about $7,500 too low. A linear model without an interaction term cannot fix that.</td>
     <td>All ten settings of C and class weight score between 0.847 and 0.850, inside a fold to fold spread of about 0.02. The pick (C=0.1, balanced) tests at 0.837.</td>
   </tr>
 </table>
