@@ -10,12 +10,12 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/card-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/card-light.svg">
-    <img src=".github/readme/card-dark.svg" alt="ML-LAB, worked notebooks for UTP's TEB3123 Machine Learning: two of eight labs done, feature engineering and selection and the supervised workflow, with a Titanic survival model at 0.837 test ROC AUC" width="850">
+    <img src=".github/readme/card-dark.svg" alt="ML-LAB, worked notebooks for UTP's TEB3123 Machine Learning: three of eight labs done, covering feature engineering and selection, the supervised workflow and the main model families, with a breast cancer SVM at 0.997 test ROC AUC" width="850">
   </picture>
 </div>
 
 <p align="center">
-  <a href="#hafizml-lab-ls-all_experiments"><img src="https://img.shields.io/badge/labs-2_of_8_done-79e0b0?style=for-the-badge&labelColor=161b22" alt="labs: 2 of 8 done"></a>
+  <a href="#hafizml-lab-ls-all_experiments"><img src="https://img.shields.io/badge/labs-3_of_8_done-79e0b0?style=for-the-badge&labelColor=161b22" alt="labs: 3 of 8 done"></a>
   <a href="#hafizml-lab-cat-resultssummaryjson"><img src="https://img.shields.io/badge/titanic-0.837_test_roc_auc-c9f7e0?style=for-the-badge&labelColor=161b22" alt="titanic: 0.837 test ROC AUC"></a>
   <a href="#hafizml-lab-python--m-venv-venv"><img src="https://img.shields.io/badge/python-3.12_%C2%B7_scikit--learn_1.9-3fb950?style=for-the-badge&labelColor=161b22" alt="python 3.12, scikit-learn 1.9"></a>
 </p>
@@ -45,11 +45,11 @@ a working day and misses a rainy Friday morning.
 ### <samp>hafiz@ml-lab:~$ ls all_experiments/</samp>
 
 | lab | notebook | topic | datasets | status |
-|:-:|:--|:--|:--|:-:|
+|:--|:--|:--|:--|:--|
 | 01 | [`lab01_features_worked`](all_experiments/lab01_features_worked.ipynb) | Feature engineering and selection | Titanic, breast cancer, student performance | done |
 | 02 | [`lab02_supervised_workflow_worked`](all_experiments/lab02_supervised_workflow_worked.ipynb) | Regression, classification, the workflow | Insurance, bike sharing, Titanic, breast cancer, heart disease | done |
-| 03 | `lab03_supervised_models_worked` | KNN, naive Bayes, SVM, trees, ensembles | Breast cancer, Titanic, Ames housing, red wine | next |
-| 04 | `lab04_clustering_pca_worked` | K-means, DBSCAN, PCA | Mall customers, digits | |
+| 03 | [`lab03_supervised_models_worked`](all_experiments/lab03_supervised_models_worked.ipynb) | KNN, naive Bayes, trees, ensembles, SVMs | Breast cancer, Titanic, Ames housing, red wine | done |
+| 04 | `lab04_clustering_pca_worked` | K-means, DBSCAN, PCA | Mall customers, digits | next |
 | 05 | `lab05_anomaly_limited_labels_worked` | Anomaly detection, limited labels | Credit card fraud, breast cancer | |
 | 06 | `lab06_reinforcement_worked` | Reinforcement learning | | |
 | 07 | `lab07_deep_learning_cnn_worked` | CNNs | Digits | |
@@ -60,11 +60,11 @@ loads the model Lab 2 saves, without retraining.
 
 ### <samp>hafiz@ml-lab:~$ cat ./marking-guide</samp>
 
-Where each handout task lives. Both notebooks are committed with their outputs, so GitHub shows
+Where each handout task lives. Every notebook is committed with its outputs, so GitHub shows
 every result without running anything.
 
 | lab | the handout asks for | where it is |
-|:-:|:--|:--|
+|:--|:--|:--|
 | 01 | Parts A to D | the Part A to Part D sections, each closing with Observations |
 | 01 | Try it yourself: cabin initial and fare per family member | Part B, under *Try it yourself* |
 | 01 | Try it yourself: SelectKBest with k=5 and k=20 | Part D, next to k=10 |
@@ -74,6 +74,11 @@ every result without running anything.
 | 02 | Run `predict_passenger.py` from the terminal | Part E, with its output; the script is in `all_experiments/` |
 | 02 | Try it yourself: heart disease | the section after Part E |
 | 02 | Check your understanding (3 questions), plus Chapter 4's | the last two sections |
+| 03 | Parts A to D | the Part A to Part D sections, each closing with Observations |
+| 03 | Save, reload and check `models/breast_cancer_svm.joblib` | the end of Part D |
+| 03 | Try it yourself: unpruned tree, linear-only SVM search | the *Try it yourself* section after Part D |
+| 03 | Verification checklist | the section after *Try it yourself* |
+| 03 | Check your understanding (3 questions) | the last section |
 
 ### <samp>hafiz@ml-lab:~$ open results/lab01/</samp>
 
@@ -129,10 +134,36 @@ grade `G2` and the error drops to 0.76, a score nobody can get on enrolment day.
   </tr>
 </table>
 
+### <samp>hafiz@ml-lab:~$ open results/lab03/</samp>
+
+<p align="center">
+  <img src="results/lab03/cancer_decision_boundaries.png" alt="Decision regions on tumour radius and texture for logistic regression (0.88 accuracy), KNN with k=11 (0.90) and Gaussian naive Bayes (0.86), with the validation tumours plotted on top" width="850">
+</p>
+
+Same two features, three model families: logistic regression draws a straight line, naive Bayes
+a curve, and KNN a ragged edge that follows local votes. On all 30 features KNN wins on accuracy
+(0.958) and naive Bayes on ROC AUC (0.992), so the metrics disagree on the winner, as they did
+for Titanic in Lab 2.
+
+<table>
+  <tr>
+    <td width="50%"><samp>deeper trees memorise</samp></td>
+    <td width="50%"><samp>is the gap bigger than the spread?</samp></td>
+  </tr>
+  <tr>
+    <td><img src="results/lab03/titanic_tree_depth.png" alt="Titanic decision tree accuracy for max_depth 1 to 12: training rises to 0.954 while validation peaks at depth 3 with 0.785"></td>
+    <td><img src="results/lab03/ames_cv_folds.png" alt="Ames Housing log-RMSE on each of three folds for a random forest and gradient boosting, with the fold means"></td>
+  </tr>
+  <tr>
+    <td>Training accuracy climbs to 0.954 at depth 12 while validation peaks at depth 3 (0.785). Left unpruned, the tree hits 0.978 on training rows and drops to 0.722 on validation.</td>
+    <td>Boosting beats the forest on every Ames fold (log-RMSE 0.127 against 0.138), but the folds swing by more than the gap. On red wine the forest wins instead.</td>
+  </tr>
+</table>
+
 ### <samp>hafiz@ml-lab:~$ cat results/*/summary.json</samp>
 
 | lab | experiment | result |
-|:-:|:--|:--|
+|:--|:--|:--|
 | 01 | Titanic, raw columns against engineered features | validation ROC AUC 0.842 → 0.872 |
 | 01 | Student grades at enrolment, lasso | MAE 2.08 grade points, 16 of 56 columns kept |
 | 02 | Insurance charges, OLS | MAE $4,181, R² 0.784 |
@@ -141,6 +172,11 @@ grade `G2` and the error drops to 0.76, a score nobody can get on enrolment day.
 | 02 | Titanic, logistic regression tuned by 5-fold CV | CV ROC AUC 0.850, test 0.837 |
 | 02 | Breast cancer, threshold 0.50 → 0.30 | recall 0.925 → 0.962, precision 0.98 at both |
 | 02 | Heart disease (try it yourself) | accuracy 0.883, ROC AUC 0.932 |
+| 03 | Breast cancer, KNN (k=11) against Gaussian naive Bayes | accuracy 0.958 against 0.944, ROC AUC 0.986 against 0.992 |
+| 03 | Titanic decision tree, depth 1 to 12 | validation peaks at depth 3 (0.785), unpruned tree 0.722 |
+| 03 | Ames log price, boosting against forest (3-fold CV) | log-RMSE 0.127 against 0.138 |
+| 03 | Red wine quality, forest against boosting | MAE 0.432 against 0.476 |
+| 03 | Breast cancer SVM, RBF tuned by 5-fold CV | CV ROC AUC 0.995, test 0.997 (a linear kernel ties at 0.997) |
 
 The decision memo for the cancer threshold closes Part C of
 [Lab 2](all_experiments/lab02_supervised_workflow_worked.ipynb).
@@ -168,9 +204,8 @@ notebook inside `all_experiments/`, which is where the code expects to run.
 ```text
 all_datasets/        the 12 course datasets, unchanged (the digits zip stays zipped for lab 4)
 all_experiments/     one worked notebook per lab, plus predict_passenger.py
-models/              the pipelines lab 2 saves, and the titanic model card
-results/lab01/       charts, tables and summary.json from the lab 1 notebook
-results/lab02/       the same for lab 2
+models/              the pipelines labs 2 and 3 save, and the titanic model card
+results/labNN/       charts, tables and summary.json, one folder per lab notebook
 requirements.txt     the course packages, pinned to the versions the notebooks ran with
 course_materials/    the lecturer's handouts, kept on this machine only (gitignored)
 .github/readme/      the banner, the card and the screenshot on this page
@@ -181,9 +216,9 @@ The layout follows the course setup chapter, so each new lab adds one
 
 ### <samp>hafiz@ml-lab:~$ cat ./notes</samp>
 
-- Lab 2, Part D reuses the Part C split, as the handout does, so Part C had already scored two
-  models on the Titanic test rows. The tuning never sees them, but strictly they are not fresh.
-  The notebook says so where it happens.
+- Part D of Lab 2 and of Lab 3 each reuse a split from earlier in the lab (Part C and Part A),
+  as the handouts do, so those test rows had already been scored once. The tuning never sees
+  them, but strictly they are not fresh. Each notebook says so where it happens.
 - In Lab 1 the handout's `coef_ != 0` count says lasso kept 18 columns. Two of those
   coefficients are around 1e-15, floating-point noise from one-hot pairs that always sum to 1,
   so 16 is the real count.

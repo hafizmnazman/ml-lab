@@ -1,0 +1,100 @@
+{
+  "knn_cv_roc_auc": {
+    "1": 0.9461,
+    "3": 0.9841,
+    "5": 0.985,
+    "7": 0.9872,
+    "11": 0.9885,
+    "21": 0.9883
+  },
+  "best_k": 11,
+  "cancer_validation": {
+    "KNN": {
+      "accuracy": 0.958,
+      "roc_auc": 0.9864
+    },
+    "GaussianNB": {
+      "accuracy": 0.9441,
+      "roc_auc": 0.9925
+    }
+  },
+  "two_feature_accuracy": {
+    "Logistic regression": 0.8811,
+    "KNN (k=11)": 0.8951,
+    "Gaussian naive Bayes": 0.8601
+  },
+  "tree_depth4": {
+    "train_accuracy": 0.8428,
+    "validation_accuracy": 0.7668
+  },
+  "tree_depth_sweep": {
+    "best_validation_depth": 3,
+    "validation_at_best": 0.7848,
+    "train_at_depth_12": 0.9536,
+    "validation_at_depth_12": 0.7309
+  },
+  "ames_cv_log_rmse": {
+    "random_forest": {
+      "folds": [
+        0.1248,
+        0.1535,
+        0.1365
+      ],
+      "mean": 0.1382,
+      "std": 0.0118
+    },
+    "gradient_boosting": {
+      "folds": [
+        0.1123,
+        0.1461,
+        0.1234
+      ],
+      "mean": 0.1273,
+      "std": 0.0141
+    }
+  },
+  "wine": {
+    "random_forest": {
+      "MAE": 0.432,
+      "RMSE": 0.5646
+    },
+    "gradient_boosting": {
+      "MAE": 0.4763,
+      "RMSE": 0.597
+    }
+  },
+  "wine_top_features": {
+    "alcohol": 0.3801,
+    "sulphates": 0.2242,
+    "volatile acidity": 0.1175
+  },
+  "svm": {
+    "best_parameters": {
+      "model__C": 10.0,
+      "model__gamma": 0.01,
+      "model__kernel": "rbf"
+    },
+    "cv_roc_auc": 0.9954,
+    "test_accuracy": 0.979,
+    "test_roc_auc": 0.9969
+  },
+  "svm_reload_matches": true,
+  "tree_unpruned": {
+    "depth": 21.0,
+    "leaves": 146.0,
+    "training accuracy": 0.9775,
+    "validation accuracy": 0.722
+  },
+  "svm_by_kernel": {
+    "linear": {
+      "cv_roc_auc": 0.9932,
+      "test_roc_auc": 0.9971,
+      "test_accuracy": 0.979
+    },
+    "rbf": {
+      "cv_roc_auc": 0.9954,
+      "test_roc_auc": 0.9969,
+      "test_accuracy": 0.979
+    }
+  }
+}
