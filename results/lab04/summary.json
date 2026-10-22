@@ -1,0 +1,100 @@
+{
+  "k_scan": {
+    "2": {
+      "inertia": 389.3862,
+      "silhouette": 0.3355
+    },
+    "3": {
+      "inertia": 295.2122,
+      "silhouette": 0.3578
+    },
+    "4": {
+      "inertia": 205.2251,
+      "silhouette": 0.404
+    },
+    "5": {
+      "inertia": 168.2476,
+      "silhouette": 0.4166
+    },
+    "6": {
+      "inertia": 133.8683,
+      "silhouette": 0.4274
+    },
+    "7": {
+      "inertia": 117.0116,
+      "silhouette": 0.4172
+    },
+    "8": {
+      "inertia": 103.8286,
+      "silhouette": 0.4087
+    }
+  },
+  "kmeans_k5_silhouette": 0.4166,
+  "dbscan_eps075": {
+    "clusters": 1,
+    "noise": 14
+  },
+  "kmeans_k5_profile": {
+    "0": {
+      "Age": 46.2,
+      "Annual Income (k$)": 26.8,
+      "Spending Score (1-100)": 18.4,
+      "customers": 20
+    },
+    "1": {
+      "Age": 25.2,
+      "Annual Income (k$)": 41.1,
+      "Spending Score (1-100)": 62.2,
+      "customers": 54
+    },
+    "2": {
+      "Age": 32.9,
+      "Annual Income (k$)": 86.1,
+      "Spending Score (1-100)": 81.5,
+      "customers": 40
+    },
+    "3": {
+      "Age": 39.9,
+      "Annual Income (k$)": 86.1,
+      "Spending Score (1-100)": 19.4,
+      "customers": 39
+    },
+    "4": {
+      "Age": 55.6,
+      "Annual Income (k$)": 54.4,
+      "Spending Score (1-100)": 48.9,
+      "customers": 47
+    }
+  },
+  "pca_budgets": {
+    "all 64 pixels": {
+      "components": 64,
+      "validation_accuracy": 0.955
+    },
+    "90% variance": {
+      "components": 21,
+      "validation_accuracy": 0.9487
+    },
+    "95% variance": {
+      "components": 29,
+      "validation_accuracy": 0.954
+    },
+    "99% variance": {
+      "components": 41,
+      "validation_accuracy": 0.9561
+    }
+  },
+  "final_test": {
+    "all_pixels_accuracy": 0.9477,
+    "pca_components": 29,
+    "pca_variance_retained": 0.9537,
+    "pca_accuracy": 0.9477
+  },
+  "reconstruction_mse": 0.0037,
+  "variance_left_out": 0.0463,
+  "saved_model_matches": true,
+  "dbscan_eps05": {
+    "clusters": 5,
+    "noise": 66
+  }
+}

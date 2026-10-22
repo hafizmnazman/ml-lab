@@ -1,0 +1,5 @@
+representation,components,validation_accuracy
+all 64 pixels,64.0,0.9550209205020921
+90% variance,21.0,0.948744769874477
+95% variance,29.0,0.9539748953974896
+99% variance,41.0,0.9560669456066946

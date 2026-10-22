@@ -10,12 +10,12 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset=".github/readme/card-dark.svg">
     <source media="(prefers-color-scheme: light)" srcset=".github/readme/card-light.svg">
-    <img src=".github/readme/card-dark.svg" alt="ML-LAB, worked notebooks for UTP's TEB3123 Machine Learning: three of eight labs done, covering feature engineering and selection, the supervised workflow and the main model families, with a breast cancer SVM at 0.997 test ROC AUC" width="850">
+    <img src=".github/readme/card-dark.svg" alt="ML-LAB, worked notebooks for UTP's TEB3123 Machine Learning: four of eight labs done, covering feature engineering and selection, the supervised workflow, the main model families, and clustering and PCA, with a breast cancer SVM at 0.997 test ROC AUC" width="850">
   </picture>
 </div>
 
 <p align="center">
-  <a href="#hafizml-lab-ls-all_experiments"><img src="https://img.shields.io/badge/labs-3_of_8_done-79e0b0?style=for-the-badge&labelColor=161b22" alt="labs: 3 of 8 done"></a>
+  <a href="#hafizml-lab-ls-all_experiments"><img src="https://img.shields.io/badge/labs-4_of_8_done-79e0b0?style=for-the-badge&labelColor=161b22" alt="labs: 4 of 8 done"></a>
   <a href="#hafizml-lab-cat-resultssummaryjson"><img src="https://img.shields.io/badge/titanic-0.837_test_roc_auc-c9f7e0?style=for-the-badge&labelColor=161b22" alt="titanic: 0.837 test ROC AUC"></a>
   <a href="#hafizml-lab-python--m-venv-venv"><img src="https://img.shields.io/badge/python-3.12_%C2%B7_scikit--learn_1.9-3fb950?style=for-the-badge&labelColor=161b22" alt="python 3.12, scikit-learn 1.9"></a>
 </p>
@@ -49,8 +49,8 @@ a working day and misses a rainy Friday morning.
 | 01 | [`lab01_features_worked`](all_experiments/lab01_features_worked.ipynb) | Feature engineering and selection | Titanic, breast cancer, student performance | done |
 | 02 | [`lab02_supervised_workflow_worked`](all_experiments/lab02_supervised_workflow_worked.ipynb) | Regression, classification, the workflow | Insurance, bike sharing, Titanic, breast cancer, heart disease | done |
 | 03 | [`lab03_supervised_models_worked`](all_experiments/lab03_supervised_models_worked.ipynb) | KNN, naive Bayes, trees, ensembles, SVMs | Breast cancer, Titanic, Ames housing, red wine | done |
-| 04 | `lab04_clustering_pca_worked` | K-means, DBSCAN, PCA | Mall customers, digits | next |
-| 05 | `lab05_anomaly_limited_labels_worked` | Anomaly detection, limited labels | Credit card fraud, breast cancer | |
+| 04 | [`lab04_clustering_pca_worked`](all_experiments/lab04_clustering_pca_worked.ipynb) | K-means, DBSCAN, PCA | Mall customers, digits | done |
+| 05 | `lab05_anomaly_limited_labels_worked` | Anomaly detection, limited labels | Credit card fraud, breast cancer | next |
 | 06 | `lab06_reinforcement_worked` | Reinforcement learning | | |
 | 07 | `lab07_deep_learning_cnn_worked` | CNNs | Digits | |
 | 08 | `lab08_deep_learning_lstm_worked` | LSTM forecasting | Bike sharing | |
@@ -79,6 +79,11 @@ every result without running anything.
 | 03 | Try it yourself: unpruned tree, linear-only SVM search | the *Try it yourself* section after Part D |
 | 03 | Verification checklist | the section after *Try it yourself* |
 | 03 | Check your understanding (3 questions) | the last section |
+| 04 | Parts A to C | the Part A to Part C sections, each closing with Observations |
+| 04 | Save and reload `models/digits_pca_logistic.joblib` | the end of Part C |
+| 04 | Try it yourself: DBSCAN with eps=0.5, and which result suits marketing | the *Try it yourself* section after Part C |
+| 04 | Verification checklist | the section after *Try it yourself* |
+| 04 | Check your understanding (3 questions), plus Chapter 15's and Chapter 16's | the last three sections |
 
 ### <samp>hafiz@ml-lab:~$ open results/lab01/</samp>
 
@@ -160,6 +165,32 @@ for Titanic in Lab 2.
   </tr>
 </table>
 
+### <samp>hafiz@ml-lab:~$ open results/lab04/</samp>
+
+<p align="center">
+  <img src="results/lab04/dbscan_eps05.png" alt="Mall customers by income and spending score: K-means with five clusters next to DBSCAN at eps 0.5, which finds five clusters and marks 66 customers as noise" width="850">
+</p>
+
+K-means gives every customer one of five segments. DBSCAN at eps=0.5 also finds five dense
+groups, but marks 66 customers (33%) as noise, including 30 of the 39 high-income, low-spending
+customers. For marketing, K-means wins: a campaign cannot target noise. At eps=0.75 DBSCAN
+finds a single cluster of 186.
+
+<table>
+  <tr>
+    <td width="50%"><samp>no single score picks k</samp></td>
+    <td width="50%"><samp>29 of 64 directions hold 95%</samp></td>
+  </tr>
+  <tr>
+    <td><img src="results/lab04/kmeans_elbow_silhouette.png" alt="K-means inertia and silhouette for k from 2 to 8: inertia bends around k=4 to 6 and the silhouette peaks at k=6"></td>
+    <td><img src="results/lab04/pca_cumulative_variance.png" alt="Cumulative explained variance of the 64 digit pixels, crossing 95% at 29 components"></td>
+  </tr>
+  <tr>
+    <td>Inertia bends around k=4 to 6 and the silhouette peaks at k=6 (0.427), with k=5 just behind (0.417). Five segments are easier to act on, so k=5 it is.</td>
+    <td>29 PCA components keep 95.4% of the pixel variance, and the classifier on them matches all 64 pixels on the test file: 0.9477 accuracy, 94 errors each.</td>
+  </tr>
+</table>
+
 ### <samp>hafiz@ml-lab:~$ cat results/*/summary.json</samp>
 
 | lab | experiment | result |
@@ -177,6 +208,9 @@ for Titanic in Lab 2.
 | 03 | Ames log price, boosting against forest (3-fold CV) | log-RMSE 0.127 against 0.138 |
 | 03 | Red wine quality, forest against boosting | MAE 0.432 against 0.476 |
 | 03 | Breast cancer SVM, RBF tuned by 5-fold CV | CV ROC AUC 0.995, test 0.997 (a linear kernel ties at 0.997) |
+| 04 | Mall customers, K-means for k = 2 to 8 | silhouette peaks at k=6 (0.427); k=5 chosen (0.417) |
+| 04 | Mall customers, DBSCAN at eps 0.75 and 0.5 | 1 cluster and 14 noise; 5 clusters and 66 noise |
+| 04 | Digits, PCA at 95% variance into logistic regression | 29 components, test accuracy 0.9477, same as all 64 pixels |
 
 The decision memo for the cancer threshold closes Part C of
 [Lab 2](all_experiments/lab02_supervised_workflow_worked.ipynb).
@@ -204,7 +238,7 @@ notebook inside `all_experiments/`, which is where the code expects to run.
 ```text
 all_datasets/        the 12 course datasets, unchanged (the digits zip stays zipped for lab 4)
 all_experiments/     one worked notebook per lab, plus predict_passenger.py
-models/              the pipelines labs 2 and 3 save, and the titanic model card
+models/              the pipelines labs 2 to 4 save, and the titanic model card
 results/labNN/       charts, tables and summary.json, one folder per lab notebook
 requirements.txt     the course packages, pinned to the versions the notebooks ran with
 course_materials/    the lecturer's handouts, kept on this machine only (gitignored)
